@@ -81,10 +81,13 @@ hr.star-primary:after {
 .logo-text {
     width:50%;
 }
+
+/* Header Section */
 header {
     text-align: center;
     color: #fff;
-    background: #89bebe;
+    background: #2c3e50;
+    padding: 100px 0;
 }
 
 header .container {
@@ -97,6 +100,10 @@ header img {
     margin: 0 auto 20px;
 }
 
+header .intro-text {
+    margin-top: 50px;
+}
+
 header .intro-text .name {
     display: block;
     text-transform: uppercase;
@@ -105,9 +112,13 @@ header .intro-text .name {
     font-weight: 700;
 }
 
+header .intro-text .logo-text {
+    max-width: 300px;
+}
+
 header .intro-text .skills {
-    font-size: 1.25em;
-    font-weight: 300;
+    font-size: 18px;
+    line-height: 1.5;
 }
 
 @media(min-width:768px) {
@@ -149,10 +160,30 @@ header .intro-text .skills {
     }
 }
 
+/* Bootstrap Core CSS */
 .navbar {
+    margin-bottom: 0;
+    border: none;
+    border-radius: 0;
     text-transform: uppercase;
     font-family: Montserrat,"Helvetica Neue",Helvetica,Arial,sans-serif;
     font-weight: 700;
+}
+
+.navbar-default .navbar-brand {
+    color: #333;
+}
+
+.navbar-default .navbar-nav > li > a {
+    color: #333;
+}
+
+.navbar-toggle {
+    border-color: transparent;
+}
+
+.navbar-toggle .icon-bar {
+    background-color: #333;
 }
 
 .navbar a:focus {
@@ -205,9 +236,10 @@ section.success a.active {
     }
 }
 
+/* Gallery Section */
 #gallery .portfolio-item {
+    margin-bottom: 30px;
     right: 0;
-    margin: 0 0 15px;
 }
 
 #gallery .portfolio-item .portfolio-link {
@@ -217,30 +249,33 @@ section.success a.active {
     max-width: 400px;
 }
 
-#gallery .portfolio-item .portfolio-link .caption {
+#gallery .portfolio-item .caption {
     position: absolute;
-    width: 100%;
-    height: 100%;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: rgba(0, 0, 0, 0.5);
     opacity: 0;
-    background: rgba(137,190,190,.9);
-    -webkit-transition: all ease .5s;
-    -moz-transition: all ease .5s;
-    transition: all ease .5s;
+    transition: all 0.3s ease-in-out;
 }
 
-#gallery .portfolio-item .portfolio-link .caption:hover {
+#gallery .portfolio-item:hover .caption {
     opacity: 1;
 }
 
 #gallery .portfolio-item .portfolio-link .caption .caption-content {
     position: absolute;
     top: 50%;
-    width: 100%;
-    height: 20px;
-    margin-top: -12px;
+    left: 50%;
+    transform: translate(-50%, -50%);
     text-align: center;
-    font-size: 20px;
     color: #fff;
+}
+
+#gallery .portfolio-item img {
+    width: 100%;
+    height: auto;
 }
 
 #gallery .portfolio-item .portfolio-link .caption .caption-content i {
@@ -335,8 +370,25 @@ form .row:first-child .floating-label-form-group {
     border-top: 1px solid #eee;
 }
 
+/* FAQ Section */
+#faq {
+    background: #18bc9c;
+    color: #fff;
+    padding: 50px 0;
+}
+
+#faq h2 {
+    font-size: 36px;
+    margin-bottom: 20px;
+}
+
+#faq .tab-content {
+    margin-top: 20px;
+}
+
 footer {
     color: #fff;
+    padding: 50px 0;
 }
 
 footer h3 {
@@ -344,8 +396,8 @@ footer h3 {
 }
 
 footer .footer-above {
-    padding-top: 50px;
-    background-color: #2c3e50;
+    background: #18bc9c;
+    padding: 50px 0;
 }
 
 footer .footer-col {
@@ -353,19 +405,25 @@ footer .footer-col {
 }
 
 footer .footer-below {
+    background: #2c3e50;
     padding: 25px 0;
-    background-color: #233140;
 }
 
-.btn-social {
+footer .btn-social {
     display: inline-block;
-    width: 50px;
-    height: 50px;
-    border: 2px solid #fff;
-    border-radius: 100%;
+    width: 40px;
+    height: 40px;
+    line-height: 40px;
     text-align: center;
-    font-size: 20px;
-    line-height: 45px;
+    border-radius: 50%;
+    background: #fff;
+    color: #333;
+    margin: 5px;
+}
+
+footer .btn-social:hover {
+    background: #18bc9c;
+    color: #fff;
 }
 
 .btn:focus,
@@ -395,24 +453,51 @@ footer .footer-below {
     outline: 0;
 }
 
-.portfolio-modal .modal-content {
-    padding: 100px 0;
-    min-height: 100%;
-    border: 0;
+/* Contact Section */
+#contact {
+    background: #2c3e50;
+    color: #fff;
+    padding: 50px 0;
+}
+
+#contact h2 {
+    font-size: 36px;
+    margin-bottom: 20px;
+}
+
+#contact .form-control {
+    background: #fff;
+    color: #333;
+    border: none;
     border-radius: 0;
-    text-align: center;
-    background-clip: border-box;
-    -webkit-box-shadow: none;
     box-shadow: none;
 }
 
+#contact .btn-success {
+    background: #18bc9c;
+    border: none;
+    border-radius: 0;
+}
+
+/* Modals */
+.portfolio-modal .modal-content {
+    border-radius: 0;
+    padding: 100px 0;
+    text-align: center;
+}
+
 .portfolio-modal .modal-content h2 {
-    margin: 0;
-    font-size: 3em;
+    font-size: 36px;
+    margin-bottom: 20px;
 }
 
 .portfolio-modal .modal-content img {
     margin-bottom: 30px;
+}
+
+.portfolio-modal .modal-content p {
+    font-size: 18px;
+    line-height: 1.5;
 }
 
 .portfolio-modal .modal-content .item-details {

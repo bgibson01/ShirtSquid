@@ -10,6 +10,8 @@ document.addEventListener("DOMContentLoaded", () => {
   console.log("Gallery container found. Rendering items...");
 
   galleryData.forEach((item) => {
+    console.log(`Processing item: ${item.src}`);
+
     // Add gallery item
     const galleryItem = `
       <div class="col-sm-4 portfolio-item">
