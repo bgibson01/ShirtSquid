@@ -5,26 +5,25 @@ const galleryData = [];
 
 // Create a Promise to notify when data is ready
 const fetchGalleryData = new Promise((resolve, reject) => {
-    fetch(`https://graph.facebook.com/v12.0/${pageId}/photos?fields=images,name&access_token=${accessToken}`)
-      .then(response => response.json())
-      .then(data => {
-        data.data.forEach((photo, index) => {
-          // Use the largest image available
-          const largestImage = photo.images[0];
-  
-          galleryData.push({
-            id: index + 1,
-            src: largestImage.source,
-            caption: photo.name || "No caption available"
-          });
+  fetch(`https://graph.facebook.com/v12.0/${pageId}/photos?fields=images,name&access_token=${accessToken}`)
+    .then((response) => response.json())
+    .then((data) => {
+      data.data.forEach((photo, index) => {
+        // Use the largest image available
+        const largestImage = photo.images[0];
+
+        galleryData.push({
+          id: index + 1,
+          src: largestImage.source,
+          caption: photo.name || "No caption available",
         });
-  
-        console.log("Gallery data fetched:", galleryData); // Check the populated array in the console
-        resolve(); // Notify that the data is ready
-      })
-      .catch(error => {
-        console.error("Error fetching Facebook photos:", error);
-        reject(error); // Notify that an error occurred
       });
-  });
-  });
+
+      console.log("Gallery data fetched:", galleryData); // Check the populated array in the console
+      resolve(); // Notify that the data is ready
+    })
+    .catch((error) => {
+      console.error("Error fetching Facebook photos:", error);
+      reject(error); // Notify that an error occurred
+    });
+});
