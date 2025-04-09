@@ -2,6 +2,11 @@ document.addEventListener("DOMContentLoaded", () => {
   const galleryContainer = document.querySelector("#gallery .row");
   const modalContainer = document.querySelector("body");
 
+  if (!galleryContainer) {
+    console.error("Gallery container not found!");
+    return;
+  }
+
   galleryData.forEach((item) => {
     // Add gallery item
     const galleryItem = `
@@ -12,11 +17,12 @@ document.addEventListener("DOMContentLoaded", () => {
               <i class="fa fa-search-plus fa-3x"></i>
             </div>
           </div>
-          <img alt="" class="img-responsive" src="${item.src}">
+          <img alt="${item.caption}" class="img-responsive" src="${item.src}">
         </a>
       </div>
     `;
     galleryContainer.insertAdjacentHTML("beforeend", galleryItem);
+    console.log(`Gallery item added: ${item.src}`);
 
     // Add modal
     const modalItem = `
@@ -33,7 +39,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 <div class="modal-body">
                   <h2>Shirt Squid</h2>
                   <hr class="star-primary">
-                  <img alt="" class="img-responsive img-centered" src="${item.src}">
+                  <img alt="${item.caption}" class="img-responsive img-centered" src="${item.src}">
                   <p>${item.caption}</p>
                   <button class="btn btn-default" data-dismiss="modal" type="button">
                     <i class="fa fa-times"></i> Close
@@ -46,5 +52,6 @@ document.addEventListener("DOMContentLoaded", () => {
       </div>
     `;
     modalContainer.insertAdjacentHTML("beforeend", modalItem);
+    console.log(`Modal added for item: ${item.src}`);
   });
 });
