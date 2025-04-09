@@ -7,6 +7,8 @@ document.addEventListener("DOMContentLoaded", () => {
     return;
   }
 
+  console.log("Gallery container found. Rendering items...");
+
   galleryData.forEach((item) => {
     // Add gallery item
     const galleryItem = `
