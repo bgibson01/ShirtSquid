@@ -1,8 +1,21 @@
-const galleryData = [
-  { id: 1, src: "img/gallery/gallery1.jpg", caption: "Great color combo, looks great!" },
-  { id: 2, src: "img/gallery/gallery2.jpg", caption: "Check out CarsandCameras on Youtube!" },
-  { id: 3, src: "img/gallery/gallery3.jpg", caption: "Shirts for a car enthusiast event and Mazdaspeedforums.org" },
-  { id: 4, src: "img/gallery/gallery4.jpg", caption: "Event shirts for a GREAT cause!" },
-  { id: 5, src: "img/gallery/gallery5.jpg", caption: "1. Pick up something heavy.<br>2. Sit it back down.<br>3. Repeat." },
-  // Add more images here
-];
+const accessToken = "EAATwwL8skx4BOZBRSiP3PqjL4RFDvJ3yMUZCyzX1LRjHlKZCMVMxzeJZApdrsfo7hEkdZCBLBWbajPkfzwy3ABWYenTEzoHQqeT4ZBcUdroXGXjLkSESiSEBnSmdZCkboZCNhswQZBX23gKrjnnwpIoWOLyIRb9O11EO6vYdeHY2vOzuVbodqp8LSvcQ2p0DmouuoXZA72UblRoHaixo1P7ZB4KkPsZD"; // Replace with your actual access token
+const pageId = "880201272040785"; // Replace with your Facebook page ID
+
+const galleryData = [];
+
+fetch(`https://graph.facebook.com/v12.0/${pageId}/posts?fields=message,full_picture&access_token=${accessToken}`)
+  .then(response => response.json())
+  .then(data => {
+    data.data
+      .filter(post => post.full_picture) // Only include posts with images
+      .forEach((post, index) => {
+        galleryData.push({
+          id: index + 1,
+          src: post.full_picture,
+          caption: post.message || "No caption available"
+        });
+      });
+
+    console.log(galleryData); // Check the populated array in the console
+  })
+  .catch(error => console.error("Error fetching Facebook posts:", error));
